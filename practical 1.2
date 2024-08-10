@@ -1,0 +1,32 @@
+//Write a programme to update some elements from array
+#include <stdio.h>
+int main()
+{
+    int a[100],n,i,index,num;
+
+printf ("Enter size of array\n"); 
+scanf("%d", &n);
+
+printf ("Enter array elements \n"); 
+for (i=0; i<n ;i++)
+{
+    scanf("%d",&a[i]);
+}
+printf ("Enter index of element\n"); 
+scanf("%d", & index);
+printf ("Enter updatting element\n"); 
+scanf("%d", & num);
+
+for(i=0;i<n;i++)
+{
+    if(i==index)
+    {
+        a[i-1]=num;
+    }
+}
+printf("Updated array elements are\n");
+for(i=0;i<n;i++)
+{
+    printf("%d\n",a[i]);
+}
+}
