@@ -1,0 +1,31 @@
+//Creation of array and Search an element  in that array using linear search
+#include <stdio.h>
+int main()
+{
+    int a[100],n,i,num,found = 0;
+printf ("Enter size of array: "); 
+scanf("%d", &n);
+printf ("Enter the elements \n"); 
+for (i=0; i<n ;i++)
+{
+    scanf("%d",&a[i]);
+}
+printf ("Enter the number to be found"); 
+scanf("%d", & num);
+
+for (i=0;i<n;i++)
+{
+if (a[i] == num)
+{
+found=1;
+printf("Element %d found at index %d",num,i+1);
+break;
+}
+}
+if(found==0)
+{
+    printf("%d not found",num);
+}
+return 0;
+}
+
