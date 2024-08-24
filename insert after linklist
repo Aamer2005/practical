@@ -1,0 +1,74 @@
+// C programme for insert element after given element linklist.
+#include<stdio.h>
+#include<malloc.h>
+#include<stdlib.h>
+
+struct node
+{
+    int data;
+    struct node*next;
+};struct node *s;
+
+void insert_after(struct node**S)
+{
+    int key;
+    struct node*p,*q,*first;
+    printf("Enter element after which want to insert\n");
+    scanf("%d",&key);
+    first=s;
+    while(s->data!=key)
+    {
+        s=s->next;
+    }
+    p=(struct node*)malloc(sizeof(struct node));
+    printf("Enter new node data at any position\n");
+    scanf("%d",&p->data);
+    if(s->data==key)
+    {
+        q=s->next;
+        s->next=p;
+        p->next=q;
+        s=first;
+    }
+    else{
+        printf("not found\n");
+    }
+ 
+}
+
+void main()
+{
+struct node *p,*q;
+
+char ch;
+
+p=(struct node*)malloc(sizeof(struct node));
+
+printf("Enter first node data\n");
+scanf("%d",&p->data);
+
+
+s=p;
+do
+{
+   q=(struct node*)malloc(sizeof(struct node));
+   printf("Enter value of next node\n");
+   scanf("%d",&q->data);
+   p->next=q;
+   p=q;
+   printf("press Y for add new node \n");
+   ch=getch();
+} while (ch=='y');
+
+p->next=NULL;
+insert_after(&s);
+
+printf("list of data are:\n");
+while(s!=NULL)
+{
+    printf("%d\n",s->data);
+    s=s->next;
+}
+getch();
+
+}
