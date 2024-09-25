@@ -1,0 +1,148 @@
+#include<stdio.h>
+
+#include<stdlib.h>
+
+#define max 10
+
+int stack1[10],top=-1;
+
+int push(); 
+
+int pop();
+
+int print(int);
+
+int push()
+
+{
+
+int num;
+
+if(top==max-1)
+
+{
+
+printf("Stack is Overflow\n");
+
+exit(1);
+
+}
+else
+
+{
+
+printf("Enter Number to be insert\n");
+
+scanf("%d",&num);
+
+top=top+1;
+
+stack1[top]=num;
+
+}
+
+}
+
+int pop()
+
+{
+
+int temp;
+
+if(top==-1)
+
+{
+
+printf("Stack Underflow \n");
+
+exit(1);
+
+}
+
+else
+
+{
+
+temp=stack1[top];
+
+ printf("Popped element: %d\n", stack1[top]);
+
+top=top-1;
+
+}
+
+}
+
+int print(int count)
+
+{
+printf("Elements are : \n");
+
+for(int i=0;i<count;i++)
+
+{
+
+printf("%d\n",stack1[i]);
+
+}
+
+}
+
+int main()
+
+{
+
+int choice,count=0;
+
+char ch;
+
+do
+
+{
+
+printf("Enter 1 for push OR Enter 2 for pop OR press 3 for print Enter 4 for 
+
+Exit: ");
+
+scanf("%d",&choice);
+
+switch(choice)
+
+{
+
+case 1: push();
+
+count++;
+
+break;
+
+case 2: pop();
+
+count--;
+
+break;
+
+case 3: print(count);
+
+break;
+case 4:printf("Succefully Exit from program");
+
+exit(1);
+
+default:printf("Enter Valid Number ");
+
+break;
+
+}
+
+printf("Press Y for continue \n");
+
+ch=getchar();
+
+ch=getchar();
+
+}while(ch=='Y'||ch=='y');
+
+return 0;
+
+}
