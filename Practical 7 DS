@@ -1,0 +1,174 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <malloc.h>
+struct node
+{
+    int data;
+    struct node *next;
+};
+
+struct node *s;
+
+void create()
+{
+    char ch;
+    struct node *p, *q;
+
+    p = (struct node *)malloc(sizeof(struct node));
+    printf("Enter First Node data : ");
+    scanf("%d", &p->data);
+    s = p;
+
+    do
+    {
+        q = (struct node *)malloc(sizeof(struct node));
+        printf("Enter next Node data : ");
+        scanf("%d", &q->data);
+
+        p->next = q;
+        p = q;
+
+        printf("Press Y for new node : ");
+        ch = getchar();
+        ch = getchar();
+
+    } while (ch == 'y' || ch == 'Y');
+    p->next = s;
+}
+
+void traverse()
+{
+    struct node *p;
+    printf("Elements Are : \n");
+    p = s;
+    do
+    {
+
+        printf("%d\n", p->data);
+        p = p->next;
+    } while (p != s);
+}
+
+void insert_beg()
+{
+    struct node*p=s,*num;
+    printf("Enter data at beginning position : ");
+    num= (struct node *)malloc(sizeof(struct node));
+    scanf("%d",&num->data);
+    
+    while(p->next!=s)
+    {
+        p=p->next;
+    }
+
+    p->next=num;
+
+    num->next=s;
+    s=num;
+    
+}
+
+void insert_end()
+{
+    struct node* p,*head=s;
+
+    p=(struct node *)malloc(sizeof(struct node));
+    printf("Enter data at End position : ");
+    scanf("%d",&p->data);
+
+    while(head->next!=s)
+    {
+        head=head->next;
+    }
+
+    head->next=p;
+    p->next=s;
+}
+
+void del_beg()
+{
+    struct node*t,*first;
+
+    first=s;
+
+    while (first->next!=s)
+    {
+       first=first->next;
+    }
+
+    t=s;
+    s=s->next;
+
+    first->next=s;
+
+    free(t);
+
+    printf("Node is deleted at begginig position\n");
+
+}
+
+void del_end()
+{
+     struct node*t,*first;
+
+    first=s;
+
+    while (first->next!=s)
+    {
+        t=first;
+       first=first->next;
+    }
+
+    t->next=s;
+
+    free(first);
+
+    printf("Node is deleted at end position\n");
+
+}
+
+int main()
+{
+    int choice;
+
+    do
+    {
+        printf("Enter 1 : create Circular linklist \nEnter 2 : traverse \nEnter 3 : insert at Beginning \nEnter 4 : insert at end \nEnter 5 : delete at beginning \nEnter 6 : delete at end \nEnter 7: Exit\n");
+        printf("Enter Choice : ");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            create();
+            break;
+        case 2:
+            traverse();
+            break;
+ 
+        case 3:
+            insert_beg();
+            break;
+
+        case 4:
+            insert_end();
+            break;
+
+            case 5:
+           del_beg();
+            break;
+
+             case 6:
+           del_end();
+            break;
+
+            case 7:
+           printf("Exit Successfully !!! ");
+           exit(1);
+            break;
+        default:
+            printf("Envalid choice !\n");
+           break;
+        }
+    } while (choice!=7);
+    return 0;
+}
